@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dish Ingredients</title>
+</head>
+<body>
+    <h1>Ingredients for {{ dish_name }}</h1>
+    
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    
+    {% if grocery_list %}
+        <ul>
+            {% for item in grocery_list %}
+                <li>{{ item.name }}: {{ item.quantity }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No ingredients found for this dish.</p>
+    {% endif %}
+    
+    <a href="{% url 'home' %}">Back to Home</a>
+</body>
+</html>

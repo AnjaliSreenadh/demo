@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Choose a Dish</h1>
+    
+    <form method="get" action="{% url 'dish_list' %}">
+        {% csrf_token %}
+        
+        <label for="dish_name">Select a dish:</label>
+        <select id="dish_name" name="dish_name">
+            <option value="" disabled selected>Select a dish</option>
+            {% for dish in dishes %}
+                <option value="{{ dish.name }}">{{ dish.name }}</option>
+            {% endfor %}
+        </select>
+        
+        <button type="submit">Show Ingredients</button>
+    </form>
+</body>
+</html>
